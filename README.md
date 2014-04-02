@@ -17,15 +17,24 @@ if it was a 1, the VULNERABLE text is displayed; if it was a 0 the not vuln text
 # ASCII ART FLOW
 
 VICTIM_IE    --- request / ----> WEBSERVER
+
 VICTIM_IE    <-- index.php ----- WEBSERVER (unique filename generated for UNC lookup)
+
 VICTIM_IE    --- UNC LOOKUP ---> HANDLER (store filename)
+
 VICTIM_IE    <-- AUTHFAIL ------ HANDLER
 
+
 VICTIM_IE_JS --  FILENAME -----> WEBSERVER
+
 WEBSERVER    --  FILENAME -----> HANDLER (over port 8080)
+
 WEBSERVER    <-- 1 OR 0   ------ HANDLER (checks dictionary of filenames seen over UNC)
+
 VICTIM_IE_JS <-- 1 OR 0   ------ WEBSERVER (passthrough from HANDLER)
+
 VICTIM_EYES <-- VULN/NOTVULN --- VICTIM_IE
+
 
 # FIREWALL RULES
 
